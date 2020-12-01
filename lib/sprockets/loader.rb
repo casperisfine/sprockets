@@ -74,6 +74,7 @@ module Sprockets
       # Returns a hash of values representing an asset
       def asset_from_cache(key)
         asset = cache.get(key, true)
+        p [asset ? :hit : :miss, key]
         if asset
           asset[:uri]       = expand_from_root(asset[:uri])
           asset[:load_path] = expand_from_root(asset[:load_path])
